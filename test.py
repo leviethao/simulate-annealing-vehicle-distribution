@@ -1,6 +1,7 @@
 from anneal import SimAnneal
 import matplotlib.pyplot as plt
 import random
+import drawing
 
 cards = []
 vehicles = []
@@ -24,4 +25,5 @@ if __name__ == "__main__":
     sa = SimAnneal(cards, vehicles, stopping_iter=5000)
     if sa.anneal() == True:
         # sa.visualize_routes()
+        drawing.draw_simulate(sa.cards, sa.vehicles, sa.best_solution)
         sa.plot_learning()
