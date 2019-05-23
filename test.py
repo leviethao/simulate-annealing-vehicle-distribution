@@ -2,15 +2,26 @@ from anneal import SimAnneal
 import matplotlib.pyplot as plt
 import random
 
-coords = []
-with open("coord.txt", "r") as f:
-    for line in f.readlines():
+cards = []
+vehicles = []
+with open("data.txt", "r") as f:
+    ncard = int(f.readline().replace("\n", ""))
+    for i in range(ncard):
+        line = f.readline()
         line = [float(x.replace("\n", "")) for x in line.split(" ")]
-        coords.append(line)
+        cards.append(line)
+    print("cards = ", cards)
+    
+    nvehicle = int(f.readline().replace("\n", ""))
+    for i in range(nvehicle):
+        line = f.readline()
+        line = [float(x.replace("\n", "")) for x in line.split(" ")]
+        vehicles.append(line)
+    print("vehicles = ", vehicles)
 
 if __name__ == "__main__":
     # coords = [[random.uniform(-1000, 1000), random.uniform(-1000, 1000)] for i in range(100)]
-    sa = SimAnneal(coords, stopping_iter=5000)
-    sa.anneal()
-    sa.visualize_routes()
-    sa.plot_learning()
+    sa = SimAnneal(cards, vehicles, stopping_iter=5000)
+    if sa.anneal() == True:
+        # sa.visualize_routes()
+        sa.plot_learning()
