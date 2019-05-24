@@ -5,7 +5,7 @@ import drawing
 
 cards = []
 vehicles = []
-with open("data.txt", "r") as f:
+with open("data2.txt", "r") as f:
     ncard = int(f.readline().replace("\n", ""))
     for i in range(ncard):
         line = f.readline()

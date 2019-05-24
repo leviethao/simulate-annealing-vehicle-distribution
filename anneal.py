@@ -82,7 +82,7 @@ class SimAnneal(object):
         """
         card, vehicle = self.cards[icard], self.vehicles[ivehicle]
         pickup_dist = math.sqrt((card[0] - vehicle[0]) ** 2 + (card[1] - vehicle[1]) ** 2)
-        delivery_dist = math.sqrt((card[2] - vehicle[0]) ** 2 + (card[3] - vehicle[1]) ** 2)
+        delivery_dist = math.sqrt((card[0] - card[2]) ** 2 + (card[1] - card[3]) ** 2)
         dist = pickup_dist + delivery_dist
         return dist
 
