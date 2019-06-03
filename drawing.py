@@ -42,14 +42,14 @@ def draw_simulate(cards, vehicles, solution):
 		# draw cards
 		for card in cards:
 			pickup_color = (0, 128,255)
-			delivery_color = (200, 128,255)
-			line_color = (100, 100, 100)
+			# delivery_color = (200, 128,255)
+			# line_color = (100, 100, 100)
 			pickup_pos = (int(card[0]), int(card[1]))
-			delivery_pos = (int(card[2]), int(card[3]))
-			v = int(card[4])
-			pygame.draw.line(screen, line_color, pickup_pos, delivery_pos, 2)	
+			# delivery_pos = (int(card[2]), int(card[3]))
+			v = int(card[2])
+			# pygame.draw.line(screen, line_color, pickup_pos, delivery_pos, 2)	
 			draw_card(screen, pickup_color, pickup_pos, (30, 30), v)
-			draw_card(screen, delivery_color, delivery_pos, (30, 30), v)
+			# draw_card(screen, delivery_color, delivery_pos, (30, 30), v)
 
 		# draw vehicles
 		for vehicle in vehicles:

@@ -26,7 +26,7 @@ class SimAnneal(object):
     def calc_v_of_cards(self):
         v = 0
         for card in self.cards:
-            v += card[4]
+            v += card[2]
         return v
     
     def get_solution(self):
@@ -40,8 +40,8 @@ class SimAnneal(object):
         for icard in range(len(self.cards)):
             selected_node = None
             for node in shuffle:
-                # if v of vehicle < v of card => continue        
-                if self.vehicles[node][2] >= self.cards[icard][4]:
+                # if v of vehicle >= v of card => append to solution
+                if self.vehicles[node][2] >= self.cards[icard][2]:
                     solution.append([icard, node])
                     selected_node = node
                     v += self.vehicles[node][2]
@@ -82,13 +82,12 @@ class SimAnneal(object):
         """
         card, vehicle = self.cards[icard], self.vehicles[ivehicle]
         pickup_dist = math.sqrt((card[0] - vehicle[0]) ** 2 + (card[1] - vehicle[1]) ** 2)
-        delivery_dist = math.sqrt((card[0] - card[2]) ** 2 + (card[1] - card[3]) ** 2)
-        dist = pickup_dist + delivery_dist
+        dist = pickup_dist
         return dist
 
     def diff_v (self, icard, ivehicle):
         card, vehicle = self.cards[icard], self.vehicles[ivehicle]
-        return vehicle[2] - card[4]
+        return vehicle[2] - card[2]
 
     def fitness(self, solution):
         """
